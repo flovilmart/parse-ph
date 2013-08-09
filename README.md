@@ -14,12 +14,12 @@ or just clone:
 
 ##Parse.PH.js
 
-in your main, just include:
+in your main, just include **at the very beginning**:
 
-	require("cloud/libs/parse-helpers/Parse.PH.js");
+	require("cloud/libs/parse-ph/Parse.PH.js");
 
 
-Helper method for registering afterSave and beforeSave methods in CloudCode, reusing some blocking code as checking if the request user is logged in, or other highly repeatable function.
+Helper methods for registering afterSave and beforeSave methods in CloudCode, reusing some blocking code as checking if the request user is logged in, or other highly repeatable function.
 
 ###Extensions for All Parse Objects:
 
