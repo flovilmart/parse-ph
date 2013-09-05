@@ -39,7 +39,9 @@ var PH = function(options) {
 var registerClass = function(objectClass){
 	var afterSave = objectClass.afterSave;
 	var beforeSave = objectClass.beforeSave;
-	_.each([beforeSave, afterSave], function(hook){
+	var beforeDelete = objectClass.beforeDelete;
+	var afterDelete = objectClass.afterDelete;
+	_.each([beforeSave, afterSave, beforeDelete, afterDelete], function(hook){
 		if (hook) {
 			var finalFunction;
 			if (typeof hook == "function") {
@@ -51,6 +53,10 @@ var registerClass = function(objectClass){
 				Parse.Cloud.afterSave(objectClass, finalFunction);
 			}else if(hook == beforeSave){
 				Parse.Cloud.beforeSave(objectClass, finalFunction);
+			}else if(hook == beforeDelete){
+				Parse.Cloud.beforeDelete(objectClass, finalFunction);
+			}else if(hook == afterDelete){
+				Parse.Cloud.afterDelete(objectClass, finalFunction);
 			}
 		}
 	});
